@@ -1,0 +1,13 @@
+.card {
+    background-color: var(--primaryColor);
+    width: 890px;
+    height: 400px;
+    margin: 45px auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    box-shadow: 4px 15px 20px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--hoverColor);
+
+}
