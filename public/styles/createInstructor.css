@@ -1,3 +1,51 @@
 body {
     background-color: rgb(26, 27, 27);
 }
+
+.card .avatar-details {
+    background-color: #ffffff;
+}
+
+form input {
+    width: 100%;
+    outline: none;
+    background-color: #ffffff;
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 7px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}
+
+form input[type="radio"] {
+    width: initial;
+    margin-right: 4px;
+}
+
+form input::placeholder {
+    font-size: 16px;
+}
+
+
+form button {
+    width: 100%;
+    height: 45px;
+    margin-top: 17px;
+    outline: none;
+    border: 1px solid var(--BackGroundColor);
+    border-radius: 4px;
+    background-color: rgb(26, 27, 27);
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 200ms;
+}
+
+form button:hover {
+    background-color: var(--BackGroundColor);
+    color: #000000;
+ 
+}

@@ -7,6 +7,11 @@
         <link rel="stylesheet" href="/styles/createInstructor.css">
     {% endblock styles %}
 
+    {% block head %}
+        <title>CrossGYM | BE a Instructor</title>
+        <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/1651/1651665.svg">
+    {% endblock head %}
+
 {% block content %}
 
     <form class="card" method="POST" action="/instructors">
@@ -20,7 +25,7 @@
 
 
         <section class="avatar-details">
-            <h3>O primeiro passo para ser um instrutor é preencher com os  seus dados:</h3>
+            <h3>Preencha os dados abaixo:</h3>
 
             <div class="item">
                 <div>Avatar URL</div>
@@ -69,7 +74,7 @@
                     <input 
                      type="text" 
                      name="services"
-                     placeholder="Separe os seus serviços por virgulas(caso seja mais de um)"
+                     placeholder="Separe os seus serviços por virgulas"
                      >
 
                 </div>

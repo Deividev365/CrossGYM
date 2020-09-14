@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,900;1,700&display=swap');
+
 .card {
     background-color: var(--primaryColor);
     width: 890px;
@@ -33,7 +35,7 @@
     font-size: 18px;
     font-weight: bold;
     text-transform: uppercase;
-    font-family: sans-serif Roboto;
+    font-family: 'Roboto', sans-serif;
 
 
 }
@@ -50,19 +52,18 @@
 .avatar-details .item div:nth-child(1) {
     color: rgb(112, 108, 108);
     line-height: 19px;
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 0.7px;
     font-weight: normal;
-    font-family: sans-serif Roboto;
+    font-family: 'Roboto', sans-serif;
 
 }
 
 .avatar-details .item div:nth-child(2) {
-    color: #181515;
-    font-weight: bold;
+    color: #585151;
     font-size: 18px;
     margin-top: 15px;
-    font-family: sans-serif Roboto;
+    font-family: 'Roboto', sans-serif;
 
 }
 
