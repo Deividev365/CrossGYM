@@ -1,0 +1,84 @@
+{% extends "layout.njk" %}
+
+    {% block styles %}
+        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="/reset.css">
+        <link rel="stylesheet" href="/styles/instructors.css">
+        <link rel="stylesheet" href="/styles/createInstructor.css">
+    {% endblock styles %}
+
+{% block content %}
+
+    <form class="card" method="POST" action="/instructors">
+
+        <section 
+            class="avatar"
+            style="background: url('https://images.pexels.com/photos/4498450/pexels-photo-4498450.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940500x500')
+            no-repeat center / cover">
+        </section>
+
+
+
+        <section class="avatar-details">
+            <h3>O primeiro passo para ser um instrutor é preencher com os  seus dados:</h3>
+
+            <div class="item">
+                <div>Avatar URL</div>
+                <div>
+                    <input 
+                     type="url"
+                     name="avatar_url"
+                     placeholder="http://"
+                     >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Seu Nome</div>
+                <div>
+                    <input 
+                     type="text"
+                     name="name"
+                     placeholder="Digite o seu nome"
+                     >
+
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Data de Nascimento</div>
+                <div>
+                    <input 
+                     type="date" 
+                     name="birth"
+                     >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Sexo</div>
+                <div>
+                    <span><input type="radio" name="gender" value="M" checked>Masculino</span>
+                    <span><input type="radio" name="gender" value="F">Feminino</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Área de Atuação</div>
+                <div>
+                    <input 
+                     type="text" 
+                     name="services"
+                     placeholder="Separe os seus serviços por virgulas(caso seja mais de um)"
+                     >
+
+                </div>
+            </div>
+
+                <button type="submit">Enviar</button>
+        </section>
+
+    </form>
+
+
+{% endblock content %}
