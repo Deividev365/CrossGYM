@@ -16,6 +16,9 @@ routes.get('/instructors/create', (req, res) => {
     return res.render('instructors/create');
 });
 
+// route created to take each user data using the id inside the data.json
+routes.get('/instructors/:id', instructors.show);
+
 // receive the datas from the user after
 // filling the gaps
 routes.post('/instructors', instructors.post );
