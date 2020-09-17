@@ -1,6 +1,6 @@
 const express = require('express');
 const routes = express.Router();
-
+const instructors = require('./instructors');
 // routes // 
 routes.get('/', (req, res) => {
      return res.redirect('/instructors');
@@ -18,10 +18,7 @@ routes.get('/instructors/create', (req, res) => {
 
 // receive the datas from the user after
 // filling the gaps
-routes.post('/instructors', (req, res) => {
-
-    return res.send(req.body);
-});
+routes.post('/instructors', instructors.post );
 
 
 routes.get('/members', (req, res) => {
