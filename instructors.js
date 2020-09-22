@@ -8,15 +8,42 @@ const data = require("./data.json");
     const {id} = req.params;
     
     const foundInstructor = data.instructors.find( (instructor) => {
-        return instructor.id == id;
+        return id == instructor.id;
     })
 
-    if(!foundInstructor) return res.send("Sorry, instructor not found :(");
+    if(!foundInstructor) {
+        return res.send("Sorry, instructor not found :(");
+    }
 
+
+    function userAge(timestamp) {
+        const today = new Date(); //
+        const birthDate = new Date(timestamp);
     
-    return res.send(foundInstructor);
- }
 
+        let userAge = today.getFullYear() - birthDate.getFullYear();
+        const month = today.getMonth() - birthDate.getMonth();
+    
+    
+        if(month < 0 ||
+           month == 0 &&
+           today.getDate() <= birthDate.getDate()) {
+
+            userAge = userAge - 1;
+        }
+    
+        return userAge;
+    }
+        
+        const instructor = {
+            ...foundInstructor,
+            age: userAge(foundInstructor.birth),
+            services: foundInstructor.services.split(","),
+            created_at: "",
+        }
+        return res.render("instructors/showInstructor", {instructor});
+    }
+    
 
 // create // instructor
 exports.post = (req, res) => {
@@ -37,6 +64,7 @@ exports.post = (req, res) => {
     const created_at = Date.now();
 
     const id = Number(data.instructors.length + 1);
+
 
 // fazendo o push pra array dentro do data.json item por item // 
     // [...]
