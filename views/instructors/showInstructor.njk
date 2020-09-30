@@ -6,7 +6,7 @@
 
         <section 
             class="avatar"
-            style="background: url( { {instructor.avatar_url} } )
+            style="background: url( {{instructor.avatar_url}} )
             no-repeat center / cover">
         </section>
 
@@ -50,6 +50,7 @@
                 <div>{{instructor.created_at}}</div>
             </div>
 
+            <a href="/instructors/{{instructor.id}}/edit" class="button">Editar</a>
         </section>
 
     </div>

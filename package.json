@@ -7,7 +7,6 @@
     "dev": "npm-run-all -p nodemon browsersync",
     "nodemon": "nodemon server.js",
     "browsersync": "browser-sync start --proxy http://localhost:3000 --files 'public, views'"
-
   },
   "repository": {
     "type": "git",
@@ -21,6 +20,7 @@
   "homepage": "https://github.com/Deividev365/CrossGYM#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "method-override": "^3.0.0",
     "nunjucks": "^3.2.2"
   },
   "devDependencies": {

@@ -23,7 +23,8 @@ time, mark, audio, video {
 	--BackGroundColor: #4c8eb4;
 	--primaryColor: #f5eded;
 	--textColor: #4f585d;
-	--hoverColor: #1d1c1c;
+	--saveButton: #3dda71;
+	--hoverColor: #22e262;
 }
 
 body {

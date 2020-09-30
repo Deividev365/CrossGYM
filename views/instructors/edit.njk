@@ -7,31 +7,55 @@
         <link rel="stylesheet" href="/styles/createInstructor.css">
     {% endblock styles %}
 
+
+
     {% block head %}
         <title>CrossGYM | BE an Instructor</title>
         <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/1651/1651665.svg">
     {% endblock head %}
 
-{% block content %}
+    
 
-    <form class="card" method="POST" action="/instructors">
+    {% block content %}
+    
+    <div class="card">
 
         <section 
             class="avatar"
             style="background: url('https://images.pexels.com/photos/4498450/pexels-photo-4498450.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940500x500')
             no-repeat center / cover">
         </section>
+    
+    <section class="avatar-details">
 
+    <form method="POST" action="/instructors?_method=PUT">
 
-
-        <section class="avatar-details">
-            <h3>Preencha os dados abaixo:</h3>
+            <h3>Editar Instrutor</h3>
 
             {% include 'instructors/fields.njk' %}
 
-        </section>
+            <input type="hidden" name="id" value="{{instructor.id}}">
+
 
     </form>
+
+            
+    <form action="/instructors?_method=DELETE" method="post">
+    
+        
+        <input type="hidden" name="id" value="{{instructor.id}}">
+        
+        <button class="remove-instructor">Remover</button>
+
+    </form>
+    
+    </section>
+
+
+
+    </div>
+
+
 
 
 {% endblock content %}

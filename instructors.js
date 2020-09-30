@@ -1,6 +1,7 @@
+const { json } = require('express');
 const fs = require('fs');
-const { parse } = require('path');
-const data = require("./data.json");
+const data = require('./data.json');
+const { userAge, date } = require('./utils');
 
 //show instructor with 'id'
  exports.show = (req, res) => {
@@ -14,36 +15,18 @@ const data = require("./data.json");
     if(!foundInstructor) {
         return res.send("Sorry, instructor not found :(");
     }
-
-
-    function userAge(timestamp) {
-        const today = new Date(); //
-        const birthDate = new Date(timestamp);
-    
-
-        let userAge = today.getFullYear() - birthDate.getFullYear();
-        const month = today.getMonth() - birthDate.getMonth();
-    
-    
-        if(month < 0 ||
-           month == 0 &&
-           today.getDate() <= birthDate.getDate()) {
-
-            userAge = userAge - 1;
-        }
-    
-        return userAge;
-    }
         
         const instructor = {
             ...foundInstructor,
             age: userAge(foundInstructor.birth),
             services: foundInstructor.services.split(","),
-            created_at: "",
-        }
+            created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at)
+        }  
+
         return res.render("instructors/showInstructor", {instructor});
-    }
-    
+
+}
+
 
 // create // instructor
 exports.post = (req, res) => {
@@ -83,9 +66,94 @@ exports.post = (req, res) => {
     fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
         if(err) return res.send("writeFile error");
 
-        return res.redirect("/instructors");
+        return res.redirect(`/instructors/`);
 
     });
 
    // return res.send(req.body);
-}        
+}
+
+
+// edit instructor
+exports.edit = (req, res) => {
+
+    const {id} = req.params;
+    
+    const foundInstructor = data.instructors.find( (instructor) => {
+        return id == instructor.id;
+    })
+
+    if(!foundInstructor) {
+        return res.send("Sorry, instructor not found :(");
+    }
+
+    const instructor = {
+        ...foundInstructor,
+        birth: date(foundInstructor.birth)
+    }
+
+
+
+    return res.render('instructors/edit', {instructor} );
+}
+
+// atualizar dados do instructor
+exports.put = (req, res)  => {
+
+    const {id} = req.body;
+
+    let index = 0;
+    
+    const foundInstructor = data.instructors.find( (instructor, foundIndex) => {
+        if(id == instructor.id) {
+            index = foundIndex;
+            return true;
+        }
+    })
+
+    if(!foundInstructor) {
+        return res.send("Sorry, instructor not found :(");      
+    }
+
+
+    const instructor = {
+        ...foundInstructor,
+        ...req.body,
+        birth: Date.parse(req.body.birth)
+    }
+
+    
+    data.instructors[index] = instructor;
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
+        if(err) return res.send("Algo deu errado!");
+
+        return res.redirect(`/instructors/${id}`);
+        
+    })
+
+
+}
+
+// deletar todos os dados do instrutor
+
+
+exports.delete = (req, res) => {
+
+    const {id} = req.body;
+
+    const filteredInstructors = data.instructors.filter((instructor) => {
+        return instructor.id != id; // false
+    })
+
+    data.instructors = filteredInstructors;
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
+        if(err) return res.send("Error!!");
+
+
+        return res.redirect("/instructors");
+    });
+
+
+}

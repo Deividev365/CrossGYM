@@ -19,9 +19,26 @@ routes.get('/instructors/create', (req, res) => {
 // route created to take each user data using the id inside the data.json
 routes.get('/instructors/:id', instructors.show);
 
+
+routes.get('/instructors/:id/edit', instructors.edit);
+
+
+
 // receive the datas from the user after
 // filling the gaps
-routes.post('/instructors', instructors.post );
+routes.post('/instructors', instructors.post);
+
+// atualizar
+routes.put('/instructors', instructors.put);
+
+// deletar
+routes.delete('/instructors', instructors.delete);
+
+
+
+
+
+
 
 
 routes.get('/members', (req, res) => {

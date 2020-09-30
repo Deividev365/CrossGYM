@@ -30,23 +30,43 @@ form input::placeholder {
 }
 
 
-form button {
-    width: 100%;
-    height: 45px;
-    margin-top: 17px;
-    outline: none;
+form button,
+a.button, .remove-instructor {
+    padding: 16px 32px;
+    background-color: var(--saveButton);
     border: 1px solid var(--BackGroundColor);
-    border-radius: 4px;
-    background-color: rgb(26, 27, 27);
-    color: #ffffff;
+    color: #3f3c3c;
+    border-radius: 1px;
+    margin-top: 32px;
+    width: 100%;
+    font-size: 16px;
     cursor: pointer;
+    transition: 0.2s;
+    outline: none;
     font-weight: bold;
-    font-size: 14px;
-    transition: 200ms;
+
 }
 
 form button:hover {
-    background-color: var(--BackGroundColor);
-    color: #000000;
+    background-color: var(--hoverColor);
  
 }
+
+a.button {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+}
+
+.remove-instructor {
+    margin-top: 20px;
+
+    background-color: #c72f2f;
+}
+
+.remove-instructor:hover {
+    color: white;
+    background-color: #e02121;
+}
+
